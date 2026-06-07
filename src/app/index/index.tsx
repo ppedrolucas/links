@@ -1,9 +1,11 @@
 import { MaterialIcons } from "@expo/vector-icons"; //importando biblioteca de ícones do Expo.
-import { Image, View, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
 //Estilos
 import { colors } from "@/styles/colors";
 import { styles } from "./styles";
+
+import { Category } from "@/components/category";
 
 //Estrutura básica de um componente React Native
 export default function Index() {
@@ -17,6 +19,9 @@ export default function Index() {
           <MaterialIcons name="add" size={32} color={colors.green[300]} />
         </TouchableOpacity>
       </View>
+      <Category name="Projetos" icon="code" />
+      <Category name="Site" icon="language" />
+      <Category name="Video" icon="movie" />
     </View>
   );
 }
