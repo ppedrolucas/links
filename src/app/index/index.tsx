@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons"; //importando biblioteca de ícones do Expo.
-import { Image, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, Modal, TouchableOpacity, View, Text } from "react-native";
 
 //Estilos
 import { colors } from "@/styles/colors";
@@ -7,6 +7,7 @@ import { colors } from "@/styles/colors";
 import { styles } from "./styles";
 
 import { Categories } from "@/components/categories";
+import { Link } from "@/components/link";
 
 //Estrutura básica de um componente React Native
 export default function Index() {
@@ -20,8 +21,44 @@ export default function Index() {
           <MaterialIcons name="add" size={32} color={colors.green[300]} />
         </TouchableOpacity>
       </View>
-      
-      <Categories/>
+
+      <Categories />
+
+      <FlatList
+        data={["1", "2", "3", "4"]}
+        keyExtractor={(item) => item}
+        renderItem={() => (
+          <Link
+            name="Rocketseat"
+            url="https://www.rocketseat.com.br"
+            onDetails={() => console.log("Clicou")}
+          />
+        )}
+        style={styles.links}
+        contentContainerStyle={styles.linksContent}
+        showsVerticalScrollIndicator={false}
+      />
+
+      <Modal transparent visible animationType="slide">
+        <View style={styles.modal}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalCategory}>Modal Title</Text>
+              <TouchableOpacity>
+                <MaterialIcons
+                  name="close"
+                  size={20}
+                  color={colors.gray[400]}
+                />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.modalLinkName}>Rocketseat</Text>
+            <Text style={styles.modalLinkUrl}>
+              https://www.rocketseat.com.br
+            </Text>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
