@@ -1,13 +1,21 @@
 import { MaterialIcons } from "@expo/vector-icons"; //importando biblioteca de ícones do Expo.
-import { FlatList, Image, Modal, TouchableOpacity, View, Text } from "react-native";
+import {
+  FlatList,
+  Image,
+  Modal,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 //Estilos
 import { colors } from "@/styles/colors";
-
 import { styles } from "./styles";
 
+//Componentes
 import { Categories } from "@/components/categories";
 import { Link } from "@/components/link";
+import { Option } from "@/components/option";
 
 //Estrutura básica de um componente React Native
 export default function Index() {
@@ -56,6 +64,10 @@ export default function Index() {
             <Text style={styles.modalLinkUrl}>
               https://www.rocketseat.com.br
             </Text>
+            <View style={styles.modalFooter}>
+              <Option name="Excluir" icon="delete" variant="secondary" />
+              <Option name="Abrir" icon="language" />
+            </View>
           </View>
         </View>
       </Modal>
