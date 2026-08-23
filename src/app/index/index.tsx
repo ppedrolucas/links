@@ -1,4 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons"; //importando biblioteca de ícones do Expo.
+import { router } from "expo-router";
 import {
   FlatList,
   Image,
@@ -25,7 +26,10 @@ export default function Index() {
       <View style={styles.header}>
         <Image source={require("@/assets/logo.png")} style={styles.logo} />
 
-        <TouchableOpacity activeOpacity={0.3}>
+        <TouchableOpacity
+          onPress={() => router.navigate("/add")}
+          activeOpacity={0.3}
+        >
           <MaterialIcons name="add" size={32} color={colors.green[300]} />
         </TouchableOpacity>
       </View>
@@ -47,7 +51,7 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
       />
 
-      <Modal transparent visible animationType="slide">
+      <Modal transparent visible={false} animationType="slide">
         <View style={styles.modal}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
