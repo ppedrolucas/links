@@ -1,5 +1,6 @@
 import { MaterialIcons } from "@expo/vector-icons"; //importando biblioteca de ícones do Expo.
 import { router } from "expo-router";
+import { useState } from "react";
 import {
   FlatList,
   Image,
@@ -17,9 +18,12 @@ import { styles } from "./styles";
 import { Categories } from "@/components/categories";
 import { Link } from "@/components/link";
 import { Option } from "@/components/option";
+import { categories } from "@/utils/categories";
 
 //Estrutura básica de um componente React Native
 export default function Index() {
+  const [category, setCategory] = useState(categories[0].name);
+
   //Por padrão o componente deve sempre retornar um JSX.
   return (
     <View style={styles.container}>
@@ -34,7 +38,7 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      <Categories />
+      <Categories onChange={setCategory} selected={category} />
 
       <FlatList
         data={["1", "2", "3", "4"]}

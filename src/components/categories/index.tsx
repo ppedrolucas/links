@@ -3,7 +3,12 @@ import { categories } from "@/utils/categories";
 import { FlatList } from "react-native";
 import { styles } from "./styles";
 
-export function Categories() {
+type Props= {
+  selected: string
+  onChange: (category: string) => void
+}
+
+export function Categories({ selected, onChange }: Props) {
   return (
     <FlatList
       //data aqui é a fonte de dados, ou seja, o array que contém as informações que serão renderizadas na lista. No caso, estamos usando o array "categories" importado do arquivo "@/utils/categories".
@@ -12,7 +17,7 @@ export function Categories() {
       keyExtractor={(item) => item.id}
       //renderItem é uma função que define como cada item da lista deve ser renderizado. Ela recebe um objeto com a propriedade "item", que representa o item atual da lista. No exemplo, estamos renderizando um componente "Category" para cada item, passando as propriedades "name", "icon" e "isSelected".
       renderItem={({ item }) => (
-        <Category name={item.name} icon={item.icon} isSelected={false} />
+        <Category name={item.name} icon={item.icon} isSelected={item.name === selected} onPress={() => onChange(item.name)} />
       )}
       horizontal
       style={styles.container}
